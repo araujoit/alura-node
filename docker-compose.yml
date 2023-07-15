@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  db:
+    image: mongo
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=passwd123
+
+  api:
+    image: 'araujoit/alura-node:1.0.0'
+    build: ./
+    ports:
+      - '3000-3100:3000'
+    depends_on:
+      - db
+    environment:
+      - MONGODB_URI=mongodb://root:passwd123@db/?retryWrites=true&w=majority

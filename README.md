@@ -10,5 +10,8 @@
 
 > docker run --name alura-node -p 3000:3000 -e MONGODB_URI='mongodb://root:passwd123@mongodb/?retryWrites=true&w=majority' --network rede-alura-node -d araujoit/alura-node:1.0.0
 
+## Deploy no Swarm
+ docker stack deploy --compose-file .\docker-compose.yml alura-node
+
 ### Referências
 - https://cursos.alura.com.br/course/nodejs-api-rest-express-mongodb
